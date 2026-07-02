@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RsStore — Прокачанный Магазин</title>
+    <link rel="stylesheet" href="shop.css">
+</head>
+<body>
+    <header>
+        <div class="header-container">
+            <h1 class="logo">⚡ RsStore</h1>
+            <div class="cart-icon">
+                🛒 Корзина: <span id="cartCount">0</span> шт. — <span id="cartTotal">0</span>$
+            </div>
+        </div>
+    </header>
+    <main class="main-container">
+        <section class="controls">
+            <input type="text" id="shopSearch" placeholder="Поиск товаров...">
+            <div class="filter-buttons">
+                <button class="filter-btn active" data-category="all">Все</button>
+                <button class="filter-btn" data-category="electronics">Электроника</button>
+                <button class="filter-btn" data-category="jewelery">Ювелирка</button>
+                <button class="filter-btn" data-category="men's clothing">Мужская одежда</button>
+                <button class="filter-btn" data-category="women's clothing">Женская одежда</button>
+            </div>
+        </section>
+        <section class="products-grid" id="productsGrid">
+            </section>
+    </main>
+    <script src="shopjs.js"></script>
+</body>
+</html>
