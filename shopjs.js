@@ -59,6 +59,7 @@ filterButtons.forEach(button => {
 });
 const cartCountElement = document.getElementById("cartCount");
 const cartTotalElement = document.getElementById("cartTotal");
+const cartClearBtn = document.getElementById("cartClearBtn");
 let cart = [];
 productsGrid.onclick = function(event) {
     if (event.target.classList.contains("add-to-cart-btn")) {
@@ -74,4 +75,8 @@ function updateCartUI() {
     cartCountElement.innerText = cart.length;
     const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
     cartTotalElement.innerText = totalPrice.toFixed(2);
+}
+cartClearBtn.onclick = function() {
+    cart = [];
+    updateCartUI();
 }
