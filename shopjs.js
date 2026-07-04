@@ -60,7 +60,7 @@ filterButtons.forEach(button => {
 const cartCountElement = document.getElementById("cartCount");
 const cartTotalElement = document.getElementById("cartTotal");
 const cartClearBtn = document.getElementById("cartClearBtn");
-let cart = [];
+let cart = JSON.parse(localStorage.getItem("myCart")) || [];
 productsGrid.onclick = function(event) {
     if (event.target.classList.contains("add-to-cart-btn")) {
         const card = event.target.closest(".product-card");
@@ -68,6 +68,7 @@ productsGrid.onclick = function(event) {
         const price = parseFloat(card.querySelector(".product-price").innerText);
         const productToCart = { title, price };
         cart.push(productToCart);
+        showToast(`🛒 ${productToCart.title} добавлено в корзину`);
         updateCartUI();
     }
 };
@@ -75,8 +76,23 @@ function updateCartUI() {
     cartCountElement.innerText = cart.length;
     const totalPrice = cart.reduce((sum, item) => sum + item.price, 0);
     cartTotalElement.innerText = totalPrice.toFixed(2);
+    localStorage.setItem("myCart", JSON.stringify(cart));
 }
 cartClearBtn.onclick = function() {
     cart = [];
     updateCartUI();
 }
+function showToast(message) {
+    const container = document.getElementById("toast-container");
+    const toast = document.createElement("div");
+    
+    toast.className = "toast";
+    toast.innerText = message;
+    
+    container.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.remove();
+    }, 3000);
+}
+updateCartUI();
